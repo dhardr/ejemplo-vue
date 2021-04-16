@@ -2,17 +2,17 @@
   <div>
     <div class="header">
       <h1>My Website</h1>
-      <p>sdfgdfg</p>
+      <p>{{subtitle}}</p>
     </div>
 
     <div class="topnav">
-      <a href="#" @click="visiblePage='home'">Home</a>
-      <a href="#" @click="visiblePage='otraPagina'">OTRA PAGINA</a>
+      <a href="#" @click="goTo('home')">Home</a>
+      <a href="#" @click="goTo('otraPagina')">OTRA PAGINA</a>
       <a href="#" style="float:right">aaaa</a>
     </div>
 
-    <home v-if="visiblePage=='home'"></home>
-    <otra-pagina v-if="visiblePage=='otraPagina'"></otra-pagina>
+    <home v-show="visiblePage=='home'"></home>
+    <otra-pagina v-show="visiblePage=='otraPagina'"></otra-pagina>
 
     <div class="footer">
       <h2>Footer</h2>
@@ -28,11 +28,17 @@ export default {
   name: 'App',
   data: function() {
     return {
-      visiblePage: 'home'
+      visiblePage: 'home',
+      subtitle: 'A la grande le puse cuca'
     }
   },
   components: {
     Home, OtraPagina
+  },
+  methods: {
+    goTo(pag) {
+      this.visiblePage=pag;
+    }
   }
 }
 </script>
